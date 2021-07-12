@@ -33,7 +33,7 @@ const PokeCard = styled.div`
         border-radius: 1em;
         font-size: large;
         overflow: hidden;
-        border: black solid 1px;
+        border: #DDDD solid 1px;
         margin: 1em 0;
         font-family: "Cinzel", serif;
 `
@@ -52,7 +52,7 @@ const PokeImg  = styled.div.attrs(props=>({
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color:${props=>props.typeOfPoke};
+    background:linear-gradient(${props=>props.typeOfPoke} ,#ffffff);
     ;    
 `
 
