@@ -1,24 +1,38 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
-
+import PokemonGrid from './components/PokemonGrid';
+import Navigation from './components/Navigation';
+import { fetchListof_,endpoints } from './Helpers/urlQueries';
+import { initLocalHost } from './Helpers/helpers';
 function App() {
+
+  const [currPokeList,setCurrPokeList] = useState([])
+  const [filtPokeList,setFiltPokeList] = useState([])
+
+  useEffect(()=>{
+    initLocalHost()
+    fetchListof_(endpoints.pokemon).then(res => setCurrPokeList(res.results))
+    
+  },[])
+
+  const filtrarPokeList = (valor) =>{
+    valor.length>20?
+    setFiltPokeList(valor.splice(0, 20)) : setFiltPokeList(valor) 
+}
+
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navigation
+        filtrarPokeList={filtrarPokeList}
+        pokeList={currPokeList}
+      />
+      <PokemonGrid
+        pokeList={filtPokeList.length>0?filtPokeList:currPokeList}
+      />
+
     </div>
+    
   );
 }
 
