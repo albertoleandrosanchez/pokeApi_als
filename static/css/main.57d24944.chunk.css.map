@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAAA,KACE,QAAS,CAET,kCAAmC,CACnC,iCAAkC,CAClC,0BACF","file":"main.57d24944.chunk.css","sourcesContent":["body {\r\n  margin: 0;\r\n\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n  font-family: \"Cinzel\", serif;\r\n}\r\n"]}
