@@ -20,13 +20,14 @@ function PokemonGrid({pokeList}) {
           )
         }); 
     }
-
+    
     const ordenarPokemons = () =>
 
     pokemons.sort(function(a, b) {
         return a - b;
       });
     
+      //sort pokemons from state
 
     useEffect(()=>{
         pushPokemons()
