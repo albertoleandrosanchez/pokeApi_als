@@ -15,6 +15,12 @@ export const getId = (pokeUrl) =>{
     return pokeUrl.split('/').filter(e=> e !== '').pop()
 }
 
+export const sortPokemons = (pokemons) =>{
+    return pokemons.sort((a,b) => {
+        return a.id - b.id;
+    })
+}
+
 export const colorTypes = {
     normal: '#A8A77A',
     fire: '#EE8130',

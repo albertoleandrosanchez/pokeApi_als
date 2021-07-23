@@ -1,51 +1,60 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from './NavImg/pokeapiLogo.png'
-import { Nav,LogoImage,Input } from '../Helpers/Elements'
+import { Nav, LogoImage, Input } from '../Helpers/Elements'
 import { initLocalHost } from '../Helpers/helpers'
 
-function Navigation({filtrarPokeList, currPokeList}) {
+function Navigation({ filtrarPokeList, currPokeList, setErrorMsg }) {
     //states
-    const [pokeListLH,setpokeListLH] = useState([])
+    const [pokeListLH, setpokeListLH] = useState([])
 
     //effect
-    useEffect(()=>{
-        
+    useEffect(() => {
+
         setpokeListLH(
             JSON.parse(localStorage.getItem('pokemons'))
         )
-           
-        },[localStorage.getItem('pokemons')]
+
+    }, [localStorage.getItem('pokemons')]
     )
-    
-    
 
-
-    
 
     //funct
     const filtrarPokemonConElValor_ = async (valor) => {
-        if(!pokeListLH){
+        if (!pokeListLH) {
             await setpokeListLH(currPokeList)
         }
-        else if(!valor){
+        else if (!valor) {
             filtrarPokeList([])
-        }else{
-        filtrarPokeList(
-            pokeListLH.filter(
-            pokemons => 
-            pokemons.name.includes(valor.toLowerCase())
+        }
+        else if (
+            pokeListLH.filter(pokemons => pokemons.name.includes(valor.toLowerCase())).length == []
+            &&
+            valor
+
+        ) {
+            filtrarPokeList([])
+            setErrorMsg('No se encontraron pokemons con el nombre de: ' + valor)
+        }
+        else {
+            filtrarPokeList(
+
+                pokeListLH.filter(
+                    pokemons =>
+                        pokemons.name.includes(valor.toLowerCase()))
+
             )
-         )
+            setErrorMsg(null)
         }
     }
 
+
     return (
         <Nav>
-            <LogoImage src={logo} alt="LOGO" roundedCircle  />
-            <Input 
+            <LogoImage src={logo} alt="LOGO" roundedCircle />
+            <Input
                 type='text'
                 placeholder="Busca tu pokemon"
-                onChange={(e)=> filtrarPokemonConElValor_(e.target.value)} 
+                onChange={(e) => filtrarPokemonConElValor_(e.target.value)}
             />
         </Nav>
     )

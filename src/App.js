@@ -4,15 +4,17 @@ import PokemonGrid from './components/PokemonGrid';
 import Navigation from './components/Navigation';
 import { fetchListof_,endpoints } from './Helpers/urlQueries';
 import { initLocalHost } from './Helpers/helpers';
-function App() {
 
+
+function App() {
+  const [errorMsg, setErrorMsg] = useState(null);
   const [currPokeList,setCurrPokeList] = useState([])
   const [filtPokeList,setFiltPokeList] = useState([])
 
   useEffect(()=>{
     initLocalHost()
     fetchListof_(endpoints.pokemon).then(res => setCurrPokeList(res.results))
-    
+
   },[])
 
   const filtrarPokeList = (valor) =>{
@@ -26,8 +28,10 @@ function App() {
       <Navigation
         filtrarPokeList={filtrarPokeList}
         pokeList={currPokeList}
+        setErrorMsg={setErrorMsg}
       />
       <PokemonGrid
+        errorMsg={errorMsg}
         pokeList={filtPokeList.length>0?filtPokeList:currPokeList}
       />
 

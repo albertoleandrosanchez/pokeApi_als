@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { Grid } from '../Helpers/Elements'
-import { getId } from '../Helpers/helpers'
+import { Grid, ErrorCartel } from '../Helpers/Elements'
+import { getId,sortPokemons } from '../Helpers/helpers'
 import { fetchPokemon } from '../Helpers/urlQueries'
 import PokemonCard from './PokemonCard'
 
 
-function PokemonGrid({pokeList}) {
-    
+function PokemonGrid({pokeList,errorMsg}) {
     const [pokemons, setPokemons] = useState([])
 
     const pushPokemons = ()=>{      
@@ -20,24 +19,21 @@ function PokemonGrid({pokeList}) {
           )
         }); 
     }
-    
-    const ordenarPokemons = () =>
 
-    pokemons.sort(function(a, b) {
-        return a - b;
-      });
-    
-      //sort pokemons from state
 
     useEffect(()=>{
         pushPokemons()
-        ordenarPokemons()
         
     },[pokeList])
 
     return (
+        errorMsg?
+            <ErrorCartel>
+                <p>{errorMsg} </p>
+            </ErrorCartel>:
         <Grid>
-            {pokemons.map((poke,id) => <PokemonCard
+            {           
+            sortPokemons(pokemons).map((poke,id) => <PokemonCard
                 pokemon={poke}
                 key={id}
             />)}

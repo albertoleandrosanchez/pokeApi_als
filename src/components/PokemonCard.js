@@ -29,7 +29,7 @@ const PokeCard = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 20em;
+        width: 90%;
         border-radius: 1em;
         font-size: large;
         overflow: hidden;
@@ -43,6 +43,9 @@ const PokeCard = styled.div`
 const PokeImg_image = styled.img`
     height: 15em;
     position: relative;
+    
+
+
 `
 
 const PokeImg  = styled.div.attrs(props=>({
@@ -54,6 +57,7 @@ const PokeImg  = styled.div.attrs(props=>({
     width: 100%;
     background:linear-gradient(${props=>props.typeOfPoke} ,#ffffff);
     ;    
+    
 `
 
 const PokeInfo = styled.div`

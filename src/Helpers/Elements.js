@@ -34,5 +34,30 @@ export const Grid = styled.div`
         grid-template-columns: repeat(auto-fill, minmax(22em,1fr));
         justify-items: center;
         align-items: center;
-        margin: 0 2em ;
+      //  margin: 0 2em ;
+      
+`
+export const ErrorCartel = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100% ;
+        height: 90vmin;
+        p{
+                color: red;
+                width: 50%;
+                padding: 1em;
+                font-size: 2em;
+                font-family: 'Cinzel', serif;
+                margin-top: 1em;
+                border: #DFB21C 1px dotted;
+                margin-bottom: 1em;
+                text-align: center;
+                @media (max-width: 600px) {
+                        
+                font-size: 1em;
+                }
+        }
+
+
 `
