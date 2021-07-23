@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import logo from './NavImg/pokeapiLogo.png'
 import { Nav, LogoImage, Input } from '../Helpers/Elements'
-import { initLocalHost } from '../Helpers/helpers'
 
 function Navigation({ filtrarPokeList, currPokeList, setErrorMsg }) {
     //states
@@ -30,12 +29,13 @@ function Navigation({ filtrarPokeList, currPokeList, setErrorMsg }) {
             pokeListLH.filter(pokemons => pokemons.name.includes(valor.toLowerCase())).length == []
             &&
             valor
-
         ) {
             filtrarPokeList([])
+            console.log('no hay poke')
             setErrorMsg('No se encontraron pokemons con el nombre de: ' + valor)
         }
         else {
+            console.log(valor)
             filtrarPokeList(
 
                 pokeListLH.filter(
