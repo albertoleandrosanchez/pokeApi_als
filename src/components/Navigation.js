@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import logo from './NavImg/pokeapiLogo.png'
+import logo from './NavImg/International_Pokemon_logo.svg'
 import { Nav, LogoImage, Input } from '../Helpers/Elements'
+import { slide as Menu} from 'react-burger-menu'
+import './Navigation.css'
 
 function Navigation({ filtrarPokeList, currPokeList, setErrorMsg }) {
     //states
@@ -50,12 +52,17 @@ function Navigation({ filtrarPokeList, currPokeList, setErrorMsg }) {
 
     return (
         <Nav>
-            <LogoImage src={logo} alt="LOGO" roundedCircle />
+            <Menu overlayClassName="Menu-hamburguer">
+            
+            <LogoImage src={logo}  alt="LOGO" roundedCircle />
             <Input
                 type='text'
                 placeholder="Busca tu pokemon"
                 onChange={(e) => filtrarPokemonConElValor_(e.target.value)}
             />
+         
+            </Menu>
+           
         </Nav>
     )
 }

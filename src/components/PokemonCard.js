@@ -3,26 +3,7 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 import styled from 'styled-components'
-import { colorTypes } from '../Helpers/helpers'
-import './pokemonCard.css'
-
-/*
-    Da sombra abajo del pokemon pero las imagenes son del mismo tamaño
-    por lo que el efecto no sirve para este ejemplo
-
-const PokeImg_shadow = styled.div`
-        position: absolute;
-        background-color: #000000;
-        border-radius: 50%;
-        width: 100%;
-        height: 1em;
-        opacity: 0.2;
-        box-shadow: 0px 0px 10px 6px rgb(0 0 0);
-        height: 2em;
-        bottom: -5%;
-        z-index: 99;
-      
-`*/
+import { colors } from '../Helpers/helpers'
 
 const PokeCard = styled.div`
         display: flex;
@@ -33,9 +14,10 @@ const PokeCard = styled.div`
         border-radius: 1em;
         font-size: large;
         overflow: hidden;
-        border: #DDDD solid 1px;
+        border: ${colors.borderColor} solid 1px;
         margin: 1em 0;
         font-family: "Cinzel", serif;
+        background-color: ${colors.light.secondary};
 `
 
 
@@ -49,13 +31,13 @@ const PokeImg_image = styled.img`
 `
 
 const PokeImg  = styled.div.attrs(props=>({
-        typeOfPoke:colorTypes[props.typeOfPoke]
+        typeOfPoke:colors.colorTypes[props.typeOfPoke]
     })
     )`
     display: flex;
     justify-content: center;
     width: 100%;
-    background:linear-gradient(${props=>props.typeOfPoke} ,#ffffff);
+    background:linear-gradient(${props=>props.typeOfPoke} ,${colors.light.secondary});
     ;    
     
 `
@@ -72,11 +54,11 @@ const TypeBadge_container = styled.div`
 `
 
 const TypeBadge = styled.p.attrs(props=>({
-    type:colorTypes[props.type]
+    type:colors.colorTypes[props.type]
 })
 )`
     margin:0.2em;
-    color:#FFFFFF;
+    color:${colors.light.secondary};
     padding: 0.2em 0.9em;
     border-radius: 0.6em;
     background-color: ${props=>props.type};

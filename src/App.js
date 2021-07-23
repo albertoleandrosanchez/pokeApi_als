@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 import PokemonGrid from './components/PokemonGrid';
 import Navigation from './components/Navigation';
 import { fetchListof_,endpoints } from './Helpers/urlQueries';
-import { initLocalHost } from './Helpers/helpers';
+import { initLocalHost,colors } from './Helpers/helpers';
+import styled from 'styled-components';
 
+const Application = styled.div`
+    margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Cinzel", serif;
+  background-color: ${colors.light.primary};
+`
 
 function App() {
   const [errorMsg, setErrorMsg] = useState(null);
@@ -24,7 +31,7 @@ function App() {
 
   return (
 
-    <div className="App">
+    <Application>
       <Navigation
         filtrarPokeList={filtrarPokeList}
         pokeList={currPokeList}
@@ -35,7 +42,7 @@ function App() {
         pokeList={filtPokeList.length>0?filtPokeList:currPokeList}
       />
 
-    </div>
+    </Application>
     
   );
 }

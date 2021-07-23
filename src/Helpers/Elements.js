@@ -1,19 +1,18 @@
 import styled from "styled-components";
+import {colors} from "../Helpers/helpers"
 
 export const Nav = styled.nav`
-        display: flex;
-        justify-content: baseline;
         position: sticky;
         align-items: center;
-        background-color: #FFFFFF;
+        background-color: ${colors.light.secondary};
         height: 4.3em;
         top:0;
-        border-bottom:#DFB21C solid ;
+        border-bottom: ${colors.borderColor} solid ;
         z-index: 100;
     `;
     
 export const LogoImage = styled.img`
-        height: 90%;
+        width: 100%;
         padding: 1em;
 
     `;
@@ -50,7 +49,7 @@ export const ErrorCartel = styled.div`
                 font-size: 2em;
                 font-family: 'Cinzel', serif;
                 margin-top: 1em;
-                border: #DFB21C 1px dotted;
+                border: ${colors.borderColor} 1px dotted;
                 margin-bottom: 1em;
                 text-align: center;
                 @media (max-width: 600px) {
